@@ -1,0 +1,424 @@
+{
+      "totalResults": 3,
+      "startIndex": 1,
+      "Resources": [
+        {
+          "name": "User",
+          "description": "User Account",
+          "attributes": [
+            {
+              "uniqueness": "server",
+              "name": "userName",
+              "description": "uniquely identified string within the system",
+              "mutability": "readOnly",
+              "type": "string",
+              "multiValued": false,
+              "caseExact": false,
+              "returned": "default",
+              "required": true
+            },
+            {
+              "name": "name",
+              "description": "The users name with given and family names",
+              "mutability": "readOnly",
+              "type": "complex",
+              "multiValued": false,
+              "returned": "default",
+              "required": true,
+              "subAttributes": [
+                {
+                  "uniqueness": "none",
+                  "name": "formatted",
+                  "description": "The full name, including all middle names, titles, and suffixes as appropriate, formatted for display(e.g., ’Ms.Barbara J Jensen, III’).",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "familyName",
+                  "description": "The family name of the User",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "givenName",
+                  "description": "The given name of the User",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "middleName",
+                  "description": "The middle name(s) of the User",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "honorificPrefix",
+                  "description": "The honorificPrefix of the User",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "honorificSuffix",
+                  "description": "The honorificSuffix of the User",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "active",
+              "description": "a boolean value to indicate user's account status",
+              "mutability": "readOnly",
+              "type": "boolean",
+              "multiValued": false,
+              "returned": "default",
+              "required": false
+            },
+            {
+              "name": "emails",
+              "description": "list of emails that user has",
+              "mutability": "readOnly",
+              "type": "complex",
+              "multiValued": true,
+              "returned": "default",
+              "required": false,
+              "subAttributes": [
+                {
+                  "uniqueness": "none",
+                  "name": "value",
+                  "description": "type of the email that user uses this email for",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "type",
+                  "description": "string that identifies type of email",
+                  "canonicalValues": [
+                    "work"
+                  ],
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "name": "primary",
+                  "description": "a boolean value to indicate if this the default contact option",
+                  "mutability": "readOnly",
+                  "type": "boolean",
+                  "multiValued": false,
+                  "returned": "default",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "phoneNumbers",
+              "description": "Phone numbers for the User.",
+              "mutability": "readOnly",
+              "type": "complex",
+              "multiValued": true,
+              "returned": "default",
+              "required": false,
+              "subAttributes": [
+                {
+                  "uniqueness": "none",
+                  "name": "value",
+                  "description": "Phone number of the User.",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "display",
+                  "description": "A human-readable name, primarily used for display purposes",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "type",
+                  "description": "A label indicating the attribute’s function",
+                  "canonicalValues": [
+                    "work",
+                    "home"
+                  ],
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "name": "primary",
+                  "description": "A Boolean value indicating the ’primary’ or preferred method of communication",
+                  "mutability": "readOnly",
+                  "type": "boolean",
+                  "multiValued": false,
+                  "returned": "default",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "addresses",
+              "description": "A physical mailing address for this User.Canonical type values of ’work’,’home’,and’ other’.This attribute is a complex type with the following sub - attributes.",
+              "mutability": "readOnly",
+              "type": "complex",
+              "multiValued": true,
+              "returned": "default",
+              "required": false,
+              "subAttributes": [
+                {
+                  "uniqueness": "none",
+                  "name": "formatted",
+                  "description": "The full mailing address, formatted for display or use with a mailing label.This attribute MAY contain newlines.",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "streetAddress",
+                  "description": "The full street address component, that identifies the house in the street and the block",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "locality",
+                  "description": "The city or locality component.",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "region",
+                  "description": "The state or region component.",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "postalCode",
+                  "description": "The zip code or postal code component.",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "country",
+                  "description": "The country name component.",
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                },
+                {
+                  "uniqueness": "none",
+                  "name": "type",
+                  "description": "A label indicating the attribute’s function",
+                  "canonicalValues": [
+                    "home"
+                  ],
+                  "mutability": "readOnly",
+                  "type": "string",
+                  "multiValued": false,
+                  "caseExact": false,
+                  "returned": "default",
+                  "required": false
+                }
+              ]
+            }
+          ],
+          "id": "urn:ietf:params:scim:schemas:core:2.0:User",
+          "meta": {
+            "location": "/v2/Schemas/urn:ietf:params:scim:schemas:core:2.0:User",
+            "lastModified": "2011-05-13T04:42:34Z",
+            "version": "W/\"3694e05e9dff591\"",
+            "created": "2010-01-23T04:56:22Z",
+            "resourceType": "Schema"
+          }
+        },
+        {
+          "name": "IANUser",
+          "description": "Integrated Aquera Network User",
+          "attributes": [
+            {
+              "uniqueness": "none",
+              "name": "tenantKey",
+              "description": "Tenant Key",
+              "mutability": "readOnly",
+              "type": "string",
+              "multiValued": false,
+              "returned": "default",
+              "caseExact": false,
+              "required": false
+            },
+            {
+              "uniqueness": "none",
+              "name": "onboardingNewHireKey",
+              "description": "Onboarding new hire key",
+              "mutability": "readOnly",
+              "type": "string",
+              "multiValued": false,
+              "returned": "default",
+              "caseExact": false,
+              "required": false
+            },
+            {
+              "uniqueness": "none",
+              "name": "externalUserId",
+              "description": "External User ID. This is the personId in Ultipro Core",
+              "mutability": "readOnly",
+              "type": "string",
+              "multiValued": false,
+              "returned": "default",
+              "caseExact": false,
+              "required": false
+            },
+            {
+              "uniqueness": "none",
+              "name": "formerLastName",
+              "description": "Former last name",
+              "mutability": "readOnly",
+              "type": "string",
+              "multiValued": false,
+              "returned": "default",
+              "caseExact": false,
+              "required": false
+            },
+            {
+              "uniqueness": "none",
+              "name": "county",
+              "description": "county",
+              "mutability": "readOnly",
+              "type": "string",
+              "multiValued": false,
+              "returned": "default",
+              "caseExact": false,
+              "required": false
+            },
+            {
+              "uniqueness": "none",
+              "name": "loadToDataVaultDate",
+              "description": "Load data vault date",
+              "mutability": "readOnly",
+              "type": "string",
+              "multiValued": false,
+              "returned": "default",
+              "caseExact": false,
+              "required": false
+            },
+            {
+              "uniqueness": "none",
+              "name": "loadToDataMartDate",
+              "description": "Load data mart date",
+              "mutability": "readOnly",
+              "type": "string",
+              "multiValued": false,
+              "returned": "default",
+              "caseExact": false,
+              "required": false
+            }
+          ],
+          "id": "urn:ietf:params:scim:schemas:ian:2.0:User",
+          "meta": {
+            "location": "Schemas/urn:ietf:params:scim:schemas:ian:2.0:User",
+            "resourceType": "Schema"
+          }
+        },
+        {
+          "name": "EnterpriseUser",
+          "description": "Enterprise User",
+          "attributes": [
+            {
+              "uniqueness": "none",
+              "name": "employeeNumber",
+              "description": "Numeric or alphanumeric identifier assignedunique number assigned to the employee",
+              "mutability": "readOnly",
+              "type": "string",
+              "multiValued": false,
+              "caseExact": false,
+              "returned": "default",
+              "required": false
+            }
+          ],
+          "id": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+          "meta": {
+            "location": "/v2/Schemas/urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+            "resourceType": "Schema"
+          }
+        }
+      ],
+      "itemsPerPage": 3,
+      "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+      ]
+}
